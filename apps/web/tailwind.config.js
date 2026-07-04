@@ -16,7 +16,31 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        display: ["Space Grotesk", "DM Sans", "sans-serif"],
+        sans: ["DM Sans", "sans-serif"],
+      },
       colors: {
+        brand: {
+          blue: {
+            400: "#5b9dff",
+            500: "#3b82f6",
+            600: "#2563eb",
+            700: "#1d4ed8",
+          },
+          purple: {
+            400: "#a78bfa",
+            500: "#8b5cf6",
+            600: "#7c3aed",
+            700: "#6d28d9",
+          },
+          crimson: {
+            400: "#fb6f7f",
+            500: "#f43f5e",
+            600: "#e11d48",
+            700: "#be123c",
+          },
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -83,10 +107,15 @@ module.exports = {
             height: "0",
           },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-12px)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        float: "float 6s ease-in-out infinite",
       },
     },
   },

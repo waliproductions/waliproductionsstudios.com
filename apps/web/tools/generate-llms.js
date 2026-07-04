@@ -18,13 +18,17 @@ const CLEAN_CONTENT_REGEX = {
 };
 
 const EXTRACTION_REGEX = {
-	route: /<Route\s+[^>]*>/g,
-	path: /path=["']([^"']+)["']/,
-	element: /element=\{<(\w+)[^}]*\/?\s*>\}/,
+	// Matches a full self-closing <Route path="..." element={<Component .../>} />
+	// tag as a single unit, capturing the path and component name directly —
+	// a naive [^>]* scan stops at the inner element's own "/>" and truncates.
+	route: /<Route\s+(?:index\s+)?(?:path=(["'])(.*?)\1\s+)?element=\{<(\w+)[^}]*\/?\s*>\}[^>]*\/>/g,
 	helmet: /<Helmet[^>]*?>([\s\S]*?)<\/Helmet>/i,
 	helmetTest: /<Helmet[\s\S]*?<\/Helmet>/i,
 	title: /<title[^>]*?>\s*(.*?)\s*<\/title>/i,
-	description: /<meta\s+name=["']description["']\s+content=["'](.*?)["']/i
+	description: /<meta\s+name=["']description["']\s+content=(["'])([\s\S]*?)\1/i,
+	seoTag: /<Seo\s+([\s\S]*?)\/>/i,
+	seoTitle: /title=(["'])([\s\S]*?)\1/,
+	seoDescription: /description=(["'])([\s\S]*?)\1/
 };
 
 function cleanContent(content) {
@@ -56,21 +60,17 @@ function extractRoutes(appJsxPath) {
 		const routeMatches = [...content.matchAll(EXTRACTION_REGEX.route)];
 
 		for (const match of routeMatches) {
-			const routeTag = match[0];
-			const pathMatch = routeTag.match(EXTRACTION_REGEX.path);
-			const elementMatch = routeTag.match(EXTRACTION_REGEX.element);
-			const isIndex = routeTag.includes('index');
+			const [routeTag, , rawPath, componentName] = match;
+			const isIndex = /<Route\s+index\s/.test(routeTag);
 
-			if (elementMatch) {
-				const componentName = elementMatch[1];
-				let routePath;
+			let routePath;
+			if (isIndex) {
+				routePath = '/';
+			} else if (rawPath) {
+				routePath = rawPath.startsWith('/') ? rawPath : `/${rawPath}`;
+			}
 
-				if (isIndex) {
-					routePath = '/';
-				} else if (pathMatch) {
-					routePath = pathMatch[1].startsWith('/') ? pathMatch[1] : `/${pathMatch[1]}`;
-				}
-
+			if (componentName && routePath) {
 				routes.set(componentName, routePath);
 			}
 		}
@@ -82,28 +82,46 @@ function extractRoutes(appJsxPath) {
 }
 
 function findReactFiles(dir) {
-	return fs.readdirSync(dir).map(item => path.join(dir, item));
+	return fs.readdirSync(dir, { withFileTypes: true })
+		.filter(entry => entry.isFile())
+		.map(entry => path.join(dir, entry.name));
 }
 
 function extractHelmetData(content, filePath, routes) {
 	const cleanedContent = cleanContent(content);
 
-	if (!EXTRACTION_REGEX.helmetTest.test(cleanedContent)) {
-		return null;
+	let title;
+	let description;
+
+	if (EXTRACTION_REGEX.helmetTest.test(cleanedContent)) {
+		const helmetMatch = content.match(EXTRACTION_REGEX.helmet);
+		if (helmetMatch) {
+			const helmetContent = helmetMatch[1];
+			title = cleanText(helmetContent.match(EXTRACTION_REGEX.title)?.[1]);
+			description = cleanText(helmetContent.match(EXTRACTION_REGEX.description)?.[2]);
+		}
 	}
 
-	const helmetMatch = content.match(EXTRACTION_REGEX.helmet);
-	if (!helmetMatch) return null;
+	if (!title && !description) {
+		const seoMatch = content.match(EXTRACTION_REGEX.seoTag);
+		if (seoMatch) {
+			const seoProps = seoMatch[1];
 
-	const helmetContent = helmetMatch[1];
-	const titleMatch = helmetContent.match(EXTRACTION_REGEX.title);
-	const descMatch = helmetContent.match(EXTRACTION_REGEX.description);
+			// Pages marked noindex (thank-you, intake forms, 404) shouldn't
+			// be advertised to AI crawlers via llms.txt either.
+			if (/(?<![\w-])noindex(?!=\{false\})/.test(seoProps)) {
+				return null;
+			}
 
-	const title = cleanText(titleMatch?.[1]);
-	const description = cleanText(descMatch?.[1]);
+			title = cleanText(seoProps.match(EXTRACTION_REGEX.seoTitle)?.[2]);
+			description = cleanText(seoProps.match(EXTRACTION_REGEX.seoDescription)?.[2]);
+		}
+	}
+
+	if (!title && !description) return null;
 
 	const fileName = path.basename(filePath, path.extname(filePath));
-	const url = routes.length && routes.has(fileName)
+	const url = routes instanceof Map && routes.has(fileName)
 		? routes.get(fileName)
 		: generateFallbackUrl(fileName);
 

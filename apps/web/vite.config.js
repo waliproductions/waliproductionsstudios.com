@@ -301,6 +301,10 @@ export default defineConfig({
 		},
 	},
 	build: {
+		// outDir lives outside the project root (../../dist/apps/web), so Vite
+		// treats it as "risky" and skips auto-emptying it by default — stale
+		// assets from prior builds would otherwise accumulate there forever.
+		emptyOutDir: true,
 		rollupOptions: {
 			external: [
 				'@babel/parser',

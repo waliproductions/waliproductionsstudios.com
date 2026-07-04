@@ -1,10 +1,17 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Monitor, Mic, Radio, Settings, Cpu, CheckCircle2 } from 'lucide-react';
+import Seo from '@/components/common/Seo';
 
 const StreamingServicesPage = () => {
   return (
     <div className="min-h-screen text-gray-200 pt-28 pb-20">
+      <Seo
+        title="Creator Tech Support"
+        description="Professional streaming and content-creator technical support from Wali Studios — OBS setup, audio routing, and workflow cleanup."
+        path="/services/streaming"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero */}
         <motion.section
@@ -13,8 +20,8 @@ const StreamingServicesPage = () => {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <div className="rounded-3xl border border-purple-500/10 bg-gradient-to-br from-purple-900/20 to-black p-8 md:p-12 shadow-2xl">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-brand-blue-600/10 to-black p-8 md:p-12 shadow-2xl">
+            <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
               Creator Services
             </p>
 
@@ -29,12 +36,11 @@ const StreamingServicesPage = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a
-                href="/contact"
-                className="inline-flex items-center rounded-full bg-purple-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+              <Link to="/contact"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
               >
                 Get Started
-              </a>
+              </Link>
 
               <a
                 href="#pricing"
@@ -54,7 +60,7 @@ const StreamingServicesPage = () => {
           className="mb-14"
         >
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-purple-500/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Who This Is For
               </h2>
@@ -68,7 +74,7 @@ const StreamingServicesPage = () => {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-purple-500/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 What You Get
               </h2>
@@ -91,9 +97,9 @@ const StreamingServicesPage = () => {
           transition={{ duration: 0.75 }}
           className="mb-14"
         >
-          <div className="rounded-3xl border border-purple-500/10 bg-zinc-950/80 p-8 md:p-10 shadow-xl">
+          <div className="rounded-3xl border border-white/10 glass p-8 md:p-10 shadow-xl">
             <div className="mb-8">
-              <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
+              <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
                 Technical Support Areas
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -103,7 +109,7 @@ const StreamingServicesPage = () => {
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Monitor className="w-8 h-8 text-purple-400 mb-4" />
+                <Monitor className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   OBS Setup
                 </h3>
@@ -114,7 +120,7 @@ const StreamingServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Mic className="w-8 h-8 text-purple-400 mb-4" />
+                <Mic className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Audio Cleanup
                 </h3>
@@ -125,7 +131,7 @@ const StreamingServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Radio className="w-8 h-8 text-purple-400 mb-4" />
+                <Radio className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Streaming Stability
                 </h3>
@@ -136,7 +142,7 @@ const StreamingServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Settings className="w-8 h-8 text-purple-400 mb-4" />
+                <Settings className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Workflow Organization
                 </h3>
@@ -147,7 +153,7 @@ const StreamingServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Cpu className="w-8 h-8 text-purple-400 mb-4" />
+                <Cpu className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Advanced Creator Systems
                 </h3>
@@ -158,7 +164,7 @@ const StreamingServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <CheckCircle2 className="w-8 h-8 text-purple-400 mb-4" />
+                <CheckCircle2 className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Practical Guidance
                 </h3>
@@ -180,7 +186,7 @@ const StreamingServicesPage = () => {
           className="mb-14"
         >
           <div className="mb-8">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
+            <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
               Service Tiers
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -189,9 +195,9 @@ const StreamingServicesPage = () => {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            <div className="rounded-3xl border border-purple-500/10 bg-white/5 p-8 shadow-xl">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl">
               <h3 className="text-2xl font-bold text-white mb-3">Basic Setup</h3>
-              <p className="text-4xl font-black text-purple-400 mb-4">$100</p>
+              <p className="text-4xl font-black text-brand-blue-400 mb-4">$100</p>
               <p className="text-gray-300 mb-6 leading-7">
                 Best for creators who need help getting started or cleaning up a
                 basic setup.
@@ -204,20 +210,19 @@ const StreamingServicesPage = () => {
                 <li>• Basic mic / camera guidance</li>
               </ul>
 
-              <a
-                href="/creator-intake?plan=basic"
-                className="inline-flex items-center rounded-full bg-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+              <Link to="/creator-intake?plan=basic"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
               >
                 Start with Basic
-              </a>
+              </Link>
             </div>
 
-            <div className="rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-900/25 to-black p-8 shadow-2xl">
-              <p className="text-xs uppercase tracking-[0.25em] text-purple-300 mb-3">
+            <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-brand-blue-600/15 to-black p-8 shadow-2xl">
+              <p className="text-xs uppercase tracking-[0.25em] text-brand-blue-300 mb-3">
                 Most Practical
               </p>
               <h3 className="text-2xl font-bold text-white mb-3">Advanced Setup</h3>
-              <p className="text-4xl font-black text-purple-400 mb-4">$250</p>
+              <p className="text-4xl font-black text-brand-blue-400 mb-4">$250</p>
               <p className="text-gray-300 mb-6 leading-7">
                 Best for creators who need deeper setup support and stronger
                 technical cleanup.
@@ -231,17 +236,16 @@ const StreamingServicesPage = () => {
                 <li>• Workflow improvement guidance</li>
               </ul>
 
-              <a
-                href="/creator-intake?plan=advanced"
-                className="inline-flex items-center rounded-full bg-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+              <Link to="/creator-intake?plan=advanced"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
               >
                 Start with Advanced
-              </a>
+              </Link>
             </div>
 
-            <div className="rounded-3xl border border-purple-500/10 bg-white/5 p-8 shadow-xl">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl">
               <h3 className="text-2xl font-bold text-white mb-3">Pro / Custom</h3>
-              <p className="text-4xl font-black text-purple-400 mb-4">$400+</p>
+              <p className="text-4xl font-black text-brand-blue-400 mb-4">$400+</p>
               <p className="text-gray-300 mb-6 leading-7">
                 Best for creators with more complex systems or advanced technical needs.
               </p>
@@ -253,12 +257,11 @@ const StreamingServicesPage = () => {
                 <li>• More involved streaming / media setups</li>
               </ul>
 
-              <a
-                href="/creator-intake?plan=custom"
-                className="inline-flex items-center rounded-full bg-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+              <Link to="/creator-intake?plan=custom"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
               >
                 Request Custom Help
-              </a>
+              </Link>
             </div>
           </div>
         </motion.section>
@@ -270,14 +273,14 @@ const StreamingServicesPage = () => {
           transition={{ duration: 0.9 }}
           className="mb-14"
         >
-          <div className="rounded-3xl border border-purple-500/10 bg-white/5 p-8 md:p-10 shadow-xl">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 shadow-xl">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Why Work With Wali Productions
             </h2>
 
             <div className="grid gap-6 md:grid-cols-3">
               <div>
-                <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                <h3 className="text-xl font-semibold text-brand-blue-400 mb-3">
                   Real Creator Perspective
                 </h3>
                 <p className="text-gray-300 leading-7">
@@ -287,7 +290,7 @@ const StreamingServicesPage = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                <h3 className="text-xl font-semibold text-brand-blue-400 mb-3">
                   Practical Help
                 </h3>
                 <p className="text-gray-300 leading-7">
@@ -297,7 +300,7 @@ const StreamingServicesPage = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                <h3 className="text-xl font-semibold text-brand-blue-400 mb-3">
                   Professional Direction
                 </h3>
                 <p className="text-gray-300 leading-7">
@@ -315,8 +318,8 @@ const StreamingServicesPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.98 }}
         >
-          <div className="rounded-3xl border border-purple-500/10 bg-gradient-to-br from-purple-900/20 to-black p-8 md:p-12 shadow-2xl text-center">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-brand-blue-600/10 to-black p-8 md:p-12 shadow-2xl text-center">
+            <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
               Ready to Improve Your Setup?
             </p>
 
@@ -329,12 +332,11 @@ const StreamingServicesPage = () => {
               Wali Productions can help you build a setup that supports your content well.
             </p>
 
-            <a
-              href="/contact"
-              className="inline-flex items-center rounded-full bg-purple-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+            <Link to="/contact"
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
             >
               Contact Wali Productions
-            </a>
+            </Link>
           </div>
         </motion.section>
       </div>

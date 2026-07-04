@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Seo from '@/components/common/Seo';
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwvaaney";
 
@@ -142,8 +143,9 @@ function CreatorIntakePage() {
   if (!plan) {
     return (
       <div className="min-h-screen bg-black text-white pt-28 pb-20 px-4">
-        <div className="max-w-3xl mx-auto text-center rounded-3xl border border-purple-500/20 bg-zinc-950 p-8 md:p-12 shadow-2xl">
-          <p className="text-sm uppercase tracking-[0.25em] text-purple-400 mb-3">
+        <Seo title="Creator Intake" description="Select a Creator Tech Support plan to begin your intake questionnaire." path="/creator-intake" noindex />
+        <div className="max-w-3xl mx-auto text-center rounded-3xl border border-white/15 glass-strong p-8 md:p-12 shadow-2xl">
+          <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
             Creator Intake
           </p>
 
@@ -156,12 +158,11 @@ function CreatorIntakePage() {
             Services page before filling out this questionnaire.
           </p>
 
-          <a
-            href="/services/streaming"
-            className="inline-flex items-center rounded-full bg-purple-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+          <Link to="/services/streaming"
+            className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
           >
             Go to Creator Services
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -169,19 +170,19 @@ function CreatorIntakePage() {
 
   return (
     <div className="min-h-screen bg-black text-gray-200 pt-28 pb-20 px-4">
+      <Seo title={planContent.title} description={planContent.intro} path="/creator-intake" noindex />
       <div className="max-w-5xl mx-auto">
         <div className="mb-6">
-          <a
-            href="/services/streaming"
-            className="inline-flex items-center text-sm font-medium text-purple-400 transition hover:text-purple-300"
+          <Link to="/services/streaming"
+            className="inline-flex items-center text-sm font-medium text-brand-blue-400 transition hover:text-brand-blue-300"
           >
             ← Back to Creator Services
-          </a>
+          </Link>
         </div>
 
         <section className="mb-10">
-          <div className="rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-950/40 to-zinc-950 p-8 md:p-12 shadow-2xl">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400 mb-3">
+          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-brand-blue-600/15 to-zinc-950 p-8 md:p-12 shadow-2xl">
+            <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
               {planContent.eyebrow}
             </p>
 
@@ -194,7 +195,7 @@ function CreatorIntakePage() {
             </p>
 
             <div className="rounded-2xl border border-white/10 bg-black/40 p-5">
-              <p className="text-sm uppercase tracking-[0.2em] text-purple-400 mb-2">
+              <p className="text-sm uppercase tracking-[0.2em] text-brand-blue-400 mb-2">
                 Selected Service
               </p>
 
@@ -209,7 +210,7 @@ function CreatorIntakePage() {
 
         <form
           onSubmit={handleSubmit}
-          className="rounded-3xl border border-purple-500/20 bg-zinc-950 p-6 md:p-8 shadow-2xl space-y-8"
+          className="rounded-3xl border border-white/15 glass-strong p-6 md:p-8 shadow-2xl space-y-8"
         >
           <section className="rounded-2xl border border-white/10 bg-black/50 p-6">
             <h2 className="text-2xl font-bold text-white mb-5">
@@ -223,8 +224,9 @@ function CreatorIntakePage() {
                 value={formData.fullName}
                 onChange={handleChange}
                 placeholder="Full Name"
+                aria-label="Full Name"
                 required
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <input
@@ -233,8 +235,9 @@ function CreatorIntakePage() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Email Address"
+                aria-label="Email Address"
                 required
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <input
@@ -243,7 +246,8 @@ function CreatorIntakePage() {
                 value={formData.creatorType}
                 onChange={handleChange}
                 placeholder="Creator Type (streamer, musician, podcaster, YouTuber, etc.)"
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500 md:col-span-2"
+                aria-label="Creator Type (streamer, musician, podcaster, YouTuber, etc.)"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400 md:col-span-2"
               />
 
               <input
@@ -252,7 +256,8 @@ function CreatorIntakePage() {
                 value={formData.platforms}
                 onChange={handleChange}
                 placeholder="Platforms (Twitch, Kick, YouTube, Facebook, TikTok, etc.)"
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500 md:col-span-2"
+                aria-label="Platforms (Twitch, Kick, YouTube, Facebook, TikTok, etc.)"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400 md:col-span-2"
               />
 
               <textarea
@@ -261,7 +266,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="4"
                 placeholder="What are you trying to accomplish with your setup?"
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500 md:col-span-2"
+                aria-label="What are you trying to accomplish with your setup?"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400 md:col-span-2"
               />
 
               <textarea
@@ -270,7 +276,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="4"
                 placeholder="What problems are you having right now? Lag, dropped frames, audio sync, routing confusion, poor audio quality, camera issues, etc."
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500 md:col-span-2"
+                aria-label="What problems are you having right now? Lag, dropped frames, audio sync, routing confusion, poor audio quality, camera issues, etc."
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400 md:col-span-2"
               />
             </div>
           </section>
@@ -286,7 +293,8 @@ function CreatorIntakePage() {
               onChange={handleChange}
               rows="6"
               placeholder="List your computer specs. Include desktop or laptop, CPU, GPU, RAM, storage, operating system, and whether you use one PC or multiple PCs."
-              className="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+              aria-label="List your computer specs. Include desktop or laptop, CPU, GPU, RAM, storage, operating system, and whether you use one PC or multiple PCs."
+              className="w-full rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
             />
           </section>
 
@@ -300,7 +308,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Describe your current setup. Include single-PC or dual-PC streaming, consoles, capture cards, monitors, docks, switchers, or anything else involved."
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Describe your current setup. Include single-PC or dual-PC streaming, consoles, capture cards, monitors, docks, switchers, or anything else involved."
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <textarea
@@ -309,7 +318,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Audio hardware: mic, interface, mixer, headphones, speakers, instruments, MIDI devices, or other audio gear."
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Audio hardware: mic, interface, mixer, headphones, speakers, instruments, MIDI devices, or other audio gear."
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <textarea
@@ -318,7 +328,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Video hardware: camera, webcam, lighting, lenses, capture hardware, monitors, or production gear."
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Video hardware: camera, webcam, lighting, lenses, capture hardware, monitors, or production gear."
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <textarea
@@ -327,7 +338,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Other gear: controllers, stream decks, tablets, routers, adapters, USB hubs, NAS, external drives, etc."
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Other gear: controllers, stream decks, tablets, routers, adapters, USB hubs, NAS, external drives, etc."
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
             </div>
           </section>
@@ -344,7 +356,8 @@ function CreatorIntakePage() {
                 value={formData.internetPlan}
                 onChange={handleChange}
                 placeholder="Internet Provider / Internet Plan"
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Internet Provider / Internet Plan"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <input
@@ -353,7 +366,8 @@ function CreatorIntakePage() {
                 value={formData.uploadDownload}
                 onChange={handleChange}
                 placeholder="Upload / Download Speeds"
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Upload / Download Speeds"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <textarea
@@ -362,7 +376,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Describe your network setup. Include router model, switch, wired or Wi-Fi connections, access points, mesh, ISP equipment, and current network issues."
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500 md:col-span-2"
+                aria-label="Describe your network setup. Include router model, switch, wired or Wi-Fi connections, access points, mesh, ISP equipment, and current network issues."
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400 md:col-span-2"
               />
             </div>
           </section>
@@ -379,7 +394,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Software used: OBS, Streamlabs, Ableton, Reaper, vMix, DAWs, plugins, routing tools, camera software, automation tools, etc."
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Software used: OBS, Streamlabs, Ableton, Reaper, vMix, DAWs, plugins, routing tools, camera software, automation tools, etc."
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <textarea
@@ -388,7 +404,8 @@ function CreatorIntakePage() {
                 onChange={handleChange}
                 rows="5"
                 placeholder="Anything else that would help us evaluate your setup or request?"
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Anything else that would help us evaluate your setup or request?"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <input
@@ -397,7 +414,8 @@ function CreatorIntakePage() {
                 value={formData.budget}
                 onChange={handleChange}
                 placeholder="Budget Range"
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Budget Range"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
 
               <input
@@ -406,12 +424,13 @@ function CreatorIntakePage() {
                 value={formData.timeline}
                 onChange={handleChange}
                 placeholder="Desired Timeline"
-                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+                aria-label="Desired Timeline"
+                className="rounded-xl border border-white/10 bg-zinc-900 px-4 py-3 text-white placeholder:text-gray-500 outline-none focus:border-brand-blue-400"
               />
             </div>
           </section>
 
-          <section className="rounded-2xl border border-purple-500/20 bg-gradient-to-br from-purple-950/40 to-black p-6 md:p-8">
+          <section className="rounded-2xl border border-white/15 bg-gradient-to-br from-brand-blue-600/15 to-black p-6 md:p-8">
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
               Send Your Intake Details
             </h2>
@@ -431,17 +450,16 @@ function CreatorIntakePage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="inline-flex items-center rounded-full bg-purple-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-purple-500 disabled:cursor-not-allowed disabled:opacity-70"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500 disabled:cursor-not-allowed disabled:opacity-70"
               >
                 {isSubmitting ? "Sending..." : "Send Intake"}
               </button>
 
-              <a
-                href="/contact"
+              <Link to="/contact"
                 className="inline-flex items-center rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:bg-white/10"
               >
                 Go to Contact Page
-              </a>
+              </Link>
             </div>
           </section>
         </form>

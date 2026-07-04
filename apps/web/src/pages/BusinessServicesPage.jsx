@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   Church,
@@ -9,10 +10,16 @@ import {
   Wrench,
   CheckCircle2,
 } from 'lucide-react';
+import Seo from '@/components/common/Seo';
 
 const BusinessServicesPage = () => {
   return (
     <div className="min-h-screen text-gray-200 pt-28 pb-20">
+      <Seo
+        title="Business & Church Services"
+        description="Website, media, and livestream technical support for churches, ministries, and small businesses from Wali Studios."
+        path="/services/business"
+      />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero */}
         <motion.section
@@ -21,8 +28,8 @@ const BusinessServicesPage = () => {
           transition={{ duration: 0.6 }}
           className="mb-14"
         >
-          <div className="rounded-3xl border border-purple-500/10 bg-gradient-to-br from-purple-900/20 to-black p-8 md:p-12 shadow-2xl">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-brand-blue-600/10 to-black p-8 md:p-12 shadow-2xl">
+            <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
               Business & Church Services
             </p>
 
@@ -37,12 +44,11 @@ const BusinessServicesPage = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a
-                href="/contact"
-                className="inline-flex items-center rounded-full bg-purple-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+              <Link to="/contact"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
               >
                 Get Started
-              </a>
+              </Link>
 
               <a
                 href="#services"
@@ -62,7 +68,7 @@ const BusinessServicesPage = () => {
           className="mb-14"
         >
           <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-2xl border border-purple-500/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 Who This Is For
               </h2>
@@ -76,7 +82,7 @@ const BusinessServicesPage = () => {
               </ul>
             </div>
 
-            <div className="rounded-2xl border border-purple-500/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm">
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-sm">
               <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                 What You Get
               </h2>
@@ -100,9 +106,9 @@ const BusinessServicesPage = () => {
           transition={{ duration: 0.75 }}
           className="mb-14"
         >
-          <div className="rounded-3xl border border-purple-500/10 bg-zinc-950/80 p-8 md:p-10 shadow-xl">
+          <div className="rounded-3xl border border-white/10 glass p-8 md:p-10 shadow-xl">
             <div className="mb-8">
-              <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
+              <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
                 Services Offered
               </p>
               <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -112,7 +118,7 @@ const BusinessServicesPage = () => {
 
             <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Globe className="w-8 h-8 text-purple-400 mb-4" />
+                <Globe className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Website Setup
                 </h3>
@@ -123,7 +129,7 @@ const BusinessServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Radio className="w-8 h-8 text-purple-400 mb-4" />
+                <Radio className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Livestream Support
                 </h3>
@@ -134,7 +140,7 @@ const BusinessServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Network className="w-8 h-8 text-purple-400 mb-4" />
+                <Network className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Technical System Guidance
                 </h3>
@@ -145,7 +151,7 @@ const BusinessServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Church className="w-8 h-8 text-purple-400 mb-4" />
+                <Church className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Church Media Support
                 </h3>
@@ -156,7 +162,7 @@ const BusinessServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Briefcase className="w-8 h-8 text-purple-400 mb-4" />
+                <Briefcase className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Small Business Support
                 </h3>
@@ -167,7 +173,7 @@ const BusinessServicesPage = () => {
               </div>
 
               <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Wrench className="w-8 h-8 text-purple-400 mb-4" />
+                <Wrench className="w-8 h-8 text-brand-blue-400 mb-4" />
                 <h3 className="text-xl font-semibold text-white mb-3">
                   Custom Technical Help
                 </h3>
@@ -188,7 +194,7 @@ const BusinessServicesPage = () => {
           className="mb-14"
         >
           <div className="mb-8">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
+            <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
               Ways to Work Together
             </p>
             <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -197,7 +203,7 @@ const BusinessServicesPage = () => {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            <div className="rounded-3xl border border-purple-500/10 bg-white/5 p-8 shadow-xl">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl">
               <h3 className="text-2xl font-bold text-white mb-3">
                 Website Setup
               </h3>
@@ -213,16 +219,15 @@ const BusinessServicesPage = () => {
                 <li>• Deployment guidance</li>
               </ul>
 
-              <a
-                href="/contact"
-                className="inline-flex items-center rounded-full bg-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+              <Link to="/contact"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
               >
                 Ask About Website Setup
-              </a>
+              </Link>
             </div>
 
-            <div className="rounded-3xl border border-purple-500/20 bg-gradient-to-br from-purple-900/25 to-black p-8 shadow-2xl">
-              <p className="text-xs uppercase tracking-[0.25em] text-purple-300 mb-3">
+            <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-brand-blue-600/15 to-black p-8 shadow-2xl">
+              <p className="text-xs uppercase tracking-[0.25em] text-brand-blue-300 mb-3">
                 Strong Fit for Churches
               </p>
               <h3 className="text-2xl font-bold text-white mb-3">
@@ -240,15 +245,14 @@ const BusinessServicesPage = () => {
                 <li>• Practical setup guidance</li>
               </ul>
 
-              <a
-                href="/contact"
-                className="inline-flex items-center rounded-full bg-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+              <Link to="/contact"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
               >
                 Ask About Media Support
-              </a>
+              </Link>
             </div>
 
-            <div className="rounded-3xl border border-purple-500/10 bg-white/5 p-8 shadow-xl">
+            <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl">
               <h3 className="text-2xl font-bold text-white mb-3">
                 Custom Support
               </h3>
@@ -264,12 +268,11 @@ const BusinessServicesPage = () => {
                 <li>• Organization-specific help</li>
               </ul>
 
-              <a
-                href="/contact"
-                className="inline-flex items-center rounded-full bg-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+              <Link to="/contact"
+                className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
               >
                 Request Custom Help
-              </a>
+              </Link>
             </div>
           </div>
         </motion.section>
@@ -281,14 +284,14 @@ const BusinessServicesPage = () => {
           transition={{ duration: 0.9 }}
           className="mb-14"
         >
-          <div className="rounded-3xl border border-purple-500/10 bg-white/5 p-8 md:p-10 shadow-xl">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 md:p-10 shadow-xl">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Why Work With Wali Productions
             </h2>
 
             <div className="grid gap-6 md:grid-cols-3">
               <div>
-                <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                <h3 className="text-xl font-semibold text-brand-blue-400 mb-3">
                   Practical Solutions
                 </h3>
                 <p className="text-gray-300 leading-7">
@@ -298,7 +301,7 @@ const BusinessServicesPage = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                <h3 className="text-xl font-semibold text-brand-blue-400 mb-3">
                   Professional Presentation
                 </h3>
                 <p className="text-gray-300 leading-7">
@@ -308,7 +311,7 @@ const BusinessServicesPage = () => {
               </div>
 
               <div>
-                <h3 className="text-xl font-semibold text-purple-400 mb-3">
+                <h3 className="text-xl font-semibold text-brand-blue-400 mb-3">
                   Dependable Direction
                 </h3>
                 <p className="text-gray-300 leading-7">
@@ -326,8 +329,8 @@ const BusinessServicesPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.98 }}
         >
-          <div className="rounded-3xl border border-purple-500/10 bg-gradient-to-br from-purple-900/20 to-black p-8 md:p-12 shadow-2xl text-center">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-brand-blue-600/10 to-black p-8 md:p-12 shadow-2xl text-center">
+            <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
               Need Dependable Help?
             </p>
 
@@ -340,12 +343,11 @@ const BusinessServicesPage = () => {
               broader technical guidance, Wali Productions can help you move forward.
             </p>
 
-            <a
-              href="/contact"
-              className="inline-flex items-center rounded-full bg-purple-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
+            <Link to="/contact"
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-brand-blue-600 to-brand-purple-600 px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-blue-600/20 transition hover:from-brand-blue-500 hover:to-brand-purple-500"
             >
               Contact Wali Productions
-            </a>
+            </Link>
           </div>
         </motion.section>
       </div>

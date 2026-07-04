@@ -1,330 +1,184 @@
-      import React from 'react';
-import { motion } from 'framer-motion';
-import {
-  Music,
-  Users,
-  Heart,
-  Headphones,
-  ArrowRight,
-  MessageCircle,
-  ExternalLink,
-} from 'lucide-react';
+import React from 'react';
+import { Disc3, Music, Heart, MessageCircle, ExternalLink, PlayCircle, ListMusic } from 'lucide-react';
+import Seo from '@/components/common/Seo';
+import Section from '@/components/common/Section';
+import Reveal from '@/components/common/Reveal';
+import GlassCard from '@/components/common/GlassCard';
+import CtaLink from '@/components/common/CtaLink';
+import PlatformLink from '@/components/common/PlatformLink';
+import { Badge } from '@/components/ui/badge';
 
-const MusicPage = () => {
-  return (
-    <div className="min-h-screen text-gray-200 pt-28 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero */}
-        <motion.section
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
-          <div className="rounded-3xl border border-purple-500/10 bg-gradient-to-br from-purple-900/20 to-black p-8 md:p-12 shadow-2xl">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
-              Music
-            </p>
+// Placeholder catalog. Replace with a live fetch once a Spotify/Apple
+// Music/Bandcamp API integration is connected — keep the same shape:
+// { title, type, year }.
+const releases = [
+  { title: 'Featured Single', type: 'Single', year: '2026' },
+  { title: 'Studio Sessions EP', type: 'EP', year: '2025' },
+  { title: 'Origins', type: 'Album', year: '2024' },
+];
 
-            <h1 className="text-4xl md:text-6xl font-black text-white leading-tight max-w-4xl mb-6">
-              Music that reflects purpose, creativity, and identity.
-            </h1>
+const playlists = [
+  { title: 'Wali Studios Radio', description: 'A rotating mix of every release, old and new.' },
+  { title: "Producer's Picks", description: 'Behind-the-scenes favorites and unreleased snippets.' },
+];
 
-            <p className="text-lg md:text-xl text-gray-300 max-w-3xl leading-8 mb-8">
-              This is the music side of Wali Productions. Built from passion,
-              faith, and real expression—not just for listening, but for
-              connection, support, and community.
-            </p>
+const availablePlatforms = [
+  {
+    icon: ExternalLink,
+    name: 'Bandcamp',
+    href: 'https://waliproductions.bandcamp.com/',
+    description: 'Support directly and connect with the catalog in a more artist-focused way.',
+  },
+  {
+    icon: Heart,
+    name: 'Patreon',
+    href: 'https://www.patreon.com/c/WaliProductionsLLC',
+    description: 'Support the mission and help fund future music, content, and brand growth.',
+  },
+  {
+    icon: MessageCircle,
+    name: 'Discord',
+    href: 'https://discord.gg/BhG9sZEA',
+    description: 'Join the community and stay connected with the broader Wali Studios ecosystem.',
+  },
+  {
+    icon: PlayCircle,
+    name: 'YouTube',
+    href: 'https://www.youtube.com/@WaliProductionsLLC',
+    description: 'Watch official music content, releases, and more.',
+  },
+];
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="https://www.patreon.com/c/WaliProductionsLLC"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full bg-purple-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
-              >
-                Support on Patreon
-              </a>
+// Streaming platforms this catalog is prepared for — not yet connected.
+// Wire each of these in as the corresponding API/embed becomes available.
+const comingSoonPlatforms = ['Spotify', 'Apple Music', 'SoundCloud', 'YouTube Music'];
 
-              <a
-                href="https://discord.gg/BhG9sZEA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:bg-white/10"
-              >
-                Join the Community
-              </a>
+const MusicPage = () => (
+  <div className="min-h-screen pt-32 pb-24">
+    <Seo
+      title="Music"
+      description="Original music from Wali Studios — albums, singles, playlists, and ways to listen and support the work."
+      path="/music"
+    />
+
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Reveal className="mb-16 max-w-3xl">
+        <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
+          Music
+        </p>
+        <h1 className="font-display text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+          Music that reflects purpose, creativity, and identity.
+        </h1>
+        <p className="text-lg text-gray-300 leading-8 mb-8">
+          Built from passion, faith, and real expression — not just for listening, but for
+          connection, support, and community.
+        </p>
+        <div className="flex flex-wrap gap-4">
+          <CtaLink to="https://www.patreon.com/c/WaliProductionsLLC">Support on Patreon</CtaLink>
+          <CtaLink to="https://discord.gg/BhG9sZEA" variant="secondary">Join the Community</CtaLink>
+        </div>
+      </Reveal>
+
+      <Section eyebrow="Now Playing" title="Player">
+        <Reveal>
+          {/* Future integration point: embed a Spotify/Apple Music/
+              Bandcamp now-playing widget here once an API is connected. */}
+          <GlassCard variant="strong" className="flex flex-col items-center gap-4 p-10 text-center md:flex-row md:text-left">
+            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue-600/30 to-brand-purple-600/30">
+              <Disc3 className="w-9 h-9 text-white" aria-hidden="true" />
             </div>
-          </div>
-        </motion.section>
-
-        {/* What the music represents */}
-        <motion.section
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="mb-16"
-        >
-          <div className="grid gap-6 md:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <Music className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-3">
-                Expression
-              </h3>
+            <div>
+              <p className="text-sm text-gray-400 mb-1">Player placeholder</p>
               <p className="text-gray-300 leading-7">
-                Music created with intention, built to reflect conviction,
-                artistry, and originality.
+                A live now-playing widget will appear here once a streaming platform is
+                connected. For now, listen directly through Bandcamp.
               </p>
             </div>
+          </GlassCard>
+        </Reveal>
+      </Section>
 
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <Headphones className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-3">
-                Listening
-              </h3>
-              <p className="text-gray-300 leading-7">
-                A place for supporters, listeners, and returning visitors to
-                connect with the sound of Wali Productions.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <Users className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-semibold text-white mb-3">
-                Community
-              </h3>
-              <p className="text-gray-300 leading-7">
-                Music is also a bridge into the wider Wali Productions ecosystem
-                through support, conversation, and shared connection.
-              </p>
-            </div>
-          </div>
-        </motion.section>
-
-        {/* Support and community */}
-        <motion.section
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.78 }}
-          className="mb-16"
-        >
-          <div className="rounded-3xl border border-purple-500/10 bg-zinc-950/80 p-8 md:p-10 shadow-xl">
-            <div className="mb-8">
-              <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
-                Support the Music
-              </p>
-              <h2 className="text-3xl md:text-4xl font-bold text-white">
-                Listen, support, and stay connected
-              </h2>
-            </div>
-
-            <div className="grid gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <Heart className="w-8 h-8 text-purple-400 mb-4" />
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  Direct Support
-                </h3>
-
-                <p className="text-gray-300 leading-8 mb-6">
-                  If the music speaks to you, there are direct ways to support
-                  the work and help Wali Productions continue growing.
-                </p>
-
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href="https://waliproductions.bandcamp.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-green-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-green-500"
-                  >
-                    Buy on Bandcamp
-                    <ExternalLink size={16} />
-                  </a>
-
-                  <a
-                    href="https://www.patreon.com/c/WaliProductionsLLC"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-purple-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
-                  >
-                    Support on Patreon
-                    <ExternalLink size={16} />
-                  </a>
-
-                  <a
-                    href="https://fiverr.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-gray-200 transition hover:bg-white/10"
-                  >
-                    Fiverr Placeholder
-                    <ExternalLink size={16} />
-                  </a>
+      <Section eyebrow="Featured Releases" title="Albums &amp; singles">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {releases.map((release, i) => (
+            <Reveal key={release.title} delay={i * 0.06}>
+              <GlassCard variant="flat" className="flex h-full flex-col p-0 overflow-hidden">
+                <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-brand-blue-600/20 to-brand-purple-600/20">
+                  <Music className="w-10 h-10 text-white/50" aria-hidden="true" />
                 </div>
-              </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <div className="mb-3 flex items-center justify-between">
+                    <Badge variant="secondary" className="rounded-full">{release.type}</Badge>
+                    <span className="text-sm text-gray-400">{release.year}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-white">{release.title}</h3>
+                </div>
+              </GlassCard>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
 
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <MessageCircle className="w-8 h-8 text-purple-400 mb-4" />
-                <h3 className="text-2xl font-semibold text-white mb-4">
-                  Community Connection
-                </h3>
+      <Section eyebrow="Playlist Showcase" title="Curated listening">
+        <div className="grid gap-6 md:grid-cols-2">
+          {playlists.map((playlist, i) => (
+            <Reveal key={playlist.title} delay={i * 0.08}>
+              <GlassCard variant="gradient" className="h-full">
+                <ListMusic className="w-8 h-8 text-brand-purple-400 mb-4" aria-hidden="true" />
+                <h3 className="text-xl font-semibold text-white mb-3">{playlist.title}</h3>
+                <p className="text-gray-300 leading-7">{playlist.description}</p>
+              </GlassCard>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
 
-                <p className="text-gray-300 leading-8 mb-6">
-                  Join the Wali Productions community and stay connected beyond
-                  the music platforms.
-                </p>
+      <Section eyebrow="Listen &amp; Support" title="Where to find the music">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {availablePlatforms.map((platform, i) => (
+            <Reveal key={platform.name} delay={i * 0.05}>
+              <PlatformLink {...platform} />
+            </Reveal>
+          ))}
+        </div>
 
-                <a
-                  href="https://discord.gg/BhG9sZEA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500"
-                >
-                  Join Discord
-                  <ExternalLink size={16} />
-                </a>
-              </div>
+        <Reveal delay={0.2} className="mt-8">
+          <GlassCard variant="flat" className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+            <div>
+              <p className="text-sm uppercase tracking-widest text-gray-400 mb-1">Coming Soon</p>
+              <p className="text-gray-300">Also on the way: {comingSoonPlatforms.join(', ')}.</p>
             </div>
+            <div className="flex flex-wrap gap-2">
+              {comingSoonPlatforms.map((name) => (
+                <Badge key={name} variant="outline" className="rounded-full border-white/15 text-gray-400">
+                  {name}
+                </Badge>
+              ))}
+            </div>
+          </GlassCard>
+        </Reveal>
+      </Section>
+
+      <Reveal>
+        <GlassCard variant="strong" className="text-center p-10 md:p-14">
+          <p className="text-sm uppercase tracking-[0.25em] text-brand-blue-400 mb-3">
+            Beyond the Music
+          </p>
+          <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-5">
+            Wali Studios also creates gaming content and creator services.
+          </h2>
+          <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-8 mb-8">
+            If you're here because of the music, explore the rest of what Wali Studios
+            is building.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <CtaLink to="/gaming">Gaming</CtaLink>
+            <CtaLink to="/services/streaming" variant="secondary">Creator Services</CtaLink>
           </div>
-        </motion.section>
-
-        {/* Music platform embeds / links area */}
-        <motion.section
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.86 }}
-          className="mb-16"
-        >
-          <div className="mb-8">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
-              Music Platforms
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              Explore the music ecosystem
-            </h2>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                Bandcamp
-              </h3>
-              <p className="text-gray-300 leading-7 mb-5">
-                Support directly through Bandcamp and connect with the catalog
-                in a more artist-focused way.
-              </p>
-              <a
-                href="https://waliproductions.bandcamp.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-purple-400 font-semibold hover:text-purple-300 transition"
-              >
-                Visit Bandcamp
-                <ArrowRight size={18} />
-              </a>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                Patreon
-              </h3>
-              <p className="text-gray-300 leading-7 mb-5">
-                Support the mission and help fuel future music, content, and
-                brand growth through Patreon.
-              </p>
-              <a
-                href="https://www.patreon.com/c/WaliProductionsLLC"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-purple-400 font-semibold hover:text-purple-300 transition"
-              >
-                Visit Patreon
-                <ArrowRight size={18} />
-              </a>
-            </div>
-
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                Discord
-              </h3>
-              <p className="text-gray-300 leading-7 mb-5">
-                Join the community and stay connected with the broader Wali
-                Productions ecosystem.
-              </p>
-              <a
-                href="https://discord.gg/BhG9sZEA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-purple-400 font-semibold hover:text-purple-300 transition"
-              >
-                Join Discord
-                <ArrowRight size={18} />
-              </a>
-            </div>
-	    
-	    <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-xl">
-              <h3 className="text-xl font-semibold text-white mb-3">
-                YouTube
-              </h3>
-              <p className="text-gray-300 leading-7 mb-5">
-                Watch official music content, releases, and more from
-		Wali Productions.
-              </p>
-              <a
-                href="https://www.youtube.com/@WaliProductionsLLC"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-purple-400 font-semibold hover:text-purple-300 transition"
-              >
-                Visit YouTube
-                <ArrowRight size={18} />
-              </a>
-            </div>
-
-
-          </div>
-        </motion.section>
-
-        {/* Bridge to services */}
-        <motion.section
-          initial={{ opacity: 0, y: 36 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.95 }}
-        >
-          <div className="rounded-3xl border border-purple-500/10 bg-gradient-to-br from-purple-900/20 to-black p-8 md:p-12 shadow-2xl text-center">
-            <p className="text-sm uppercase tracking-[0.25em] text-purple-400/80 mb-3">
-              Beyond the Music
-            </p>
-
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-5">
-              Wali Productions also supports creators, churches, and small businesses.
-            </h2>
-
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-8 mb-8">
-              If you’re here because of the music, you can also explore the
-              creator and service side of the brand.
-            </p>
-
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="/services/streaming"
-                className="inline-flex items-center rounded-full bg-purple-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-purple-500"
-              >
-                Creator Services
-              </a>
-
-              <a
-                href="/services/business"
-                className="inline-flex items-center rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-gray-200 transition hover:bg-white/10"
-              >
-                Business & Church Services
-              </a>
-            </div>
-          </div>
-        </motion.section>
-      </div>
+        </GlassCard>
+      </Reveal>
     </div>
-  );
-};
+  </div>
+);
 
 export default MusicPage;
