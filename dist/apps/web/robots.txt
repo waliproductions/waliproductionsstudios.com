@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /thank-you
-Disallow: /creator-intake
-
-Sitemap: https://waliproductionsstudios.com/sitemap.xml
