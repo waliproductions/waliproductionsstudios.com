@@ -45,7 +45,7 @@ const CommunityPage = () => (
                 The main hub for conversation, stream alerts, announcements, and direct
                 connection with other supporters.
               </p>
-              <CtaLink to="https://discord.gg/BhG9sZEA">Join the Discord</CtaLink>
+              <CtaLink to="https://discord.gg/eSxWrSh7fv">Join the Discord</CtaLink>
             </GlassCard>
           </Reveal>
 
@@ -87,7 +87,7 @@ const CommunityPage = () => (
               coming next, the community is the best place to start.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <CtaLink to="https://discord.gg/BhG9sZEA">Join Discord</CtaLink>
+              <CtaLink to="https://discord.gg/eSxWrSh7fv">Join Discord</CtaLink>
               <CtaLink to="/contact" variant="secondary">Contact Us</CtaLink>
             </div>
           </GlassCard>

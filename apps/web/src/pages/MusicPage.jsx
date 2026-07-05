@@ -38,7 +38,7 @@ const availablePlatforms = [
   {
     icon: MessageCircle,
     name: 'Discord',
-    href: 'https://discord.gg/BhG9sZEA',
+    href: 'https://discord.gg/eSxWrSh7fv',
     description: 'Join the community and stay connected with the broader Wali Studios ecosystem.',
   },
   {
@@ -75,7 +75,7 @@ const MusicPage = () => (
         </p>
         <div className="flex flex-wrap gap-4">
           <CtaLink to="https://www.patreon.com/c/WaliProductionsLLC">Support on Patreon</CtaLink>
-          <CtaLink to="https://discord.gg/BhG9sZEA" variant="secondary">Join the Community</CtaLink>
+          <CtaLink to="https://discord.gg/eSxWrSh7fv" variant="secondary">Join the Community</CtaLink>
         </div>
       </Reveal>
 
