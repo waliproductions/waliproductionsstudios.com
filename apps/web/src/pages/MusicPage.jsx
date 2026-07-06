@@ -1,11 +1,12 @@
 import React from 'react';
-import { Disc3, Music, Heart, MessageCircle, ExternalLink, PlayCircle, ListMusic } from 'lucide-react';
+import { Music, Heart, MessageCircle, ExternalLink, PlayCircle, ListMusic } from 'lucide-react';
 import Seo from '@/components/common/Seo';
 import Section from '@/components/common/Section';
 import Reveal from '@/components/common/Reveal';
 import GlassCard from '@/components/common/GlassCard';
 import CtaLink from '@/components/common/CtaLink';
 import PlatformLink from '@/components/common/PlatformLink';
+import SpotifyEmbed from '@/components/common/SpotifyEmbed';
 import { Badge } from '@/components/ui/badge';
 
 // Placeholder catalog. Replace with a live fetch once a Spotify/Apple
@@ -81,20 +82,14 @@ const MusicPage = () => (
 
       <Section eyebrow="Now Playing" title="Player">
         <Reveal>
-          {/* Future integration point: embed a Spotify/Apple Music/
-              Bandcamp now-playing widget here once an API is connected. */}
-          <GlassCard variant="strong" className="flex flex-col items-center gap-4 p-10 text-center md:flex-row md:text-left">
-            <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-brand-blue-600/30 to-brand-purple-600/30">
-              <Disc3 className="w-9 h-9 text-white" aria-hidden="true" />
-            </div>
-            <div>
-              <p className="text-sm text-gray-400 mb-1">Player placeholder</p>
-              <p className="text-gray-300 leading-7">
-                A live now-playing widget will appear here once a streaming platform is
-                connected. For now, listen directly through Bandcamp.
-              </p>
-            </div>
-          </GlassCard>
+          {/*
+            Spotify embed — official iframe approach (no OAuth / Web Playback SDK).
+            SpotifyEmbed currently points at a placeholder ID. Swap it out once the
+            real Wali Studios Spotify playlist/album/artist is live — see the
+            REAL SPOTIFY URL GOES HERE comment in
+            src/components/common/SpotifyEmbed.jsx for the exact prop to change.
+          */}
+          <SpotifyEmbed type="playlist" title="Wali Studios — Spotify player" />
         </Reveal>
       </Section>
 
